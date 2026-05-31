@@ -14,12 +14,12 @@ grass_img = transform.scale(grass_img, (800, 400))
 ceu_img = image.load("ceunovo.jpg")
 ceu_img = transform.scale(ceu_img, (800, 400))
 
-loc_x = 0
-loc_y = 400
+loc_x = 100
+loc_y = 200
 
-hero_img = image.load("assets/assets/Hero_walk_01.png")
+hero_img = transform.scale(image.load("assets/assets/Hero_walk_01.png"), (300, 400))
 
-hero_standard = image.load("assets/assets/Hero_walk_14.png")
+hero_standard = transform.scale(image.load("assets/assets/Hero_walk_14.png"), (300, 400))
 
 dino_img = image.load("dino/row-1-column-1.png")
 dino_img = transform.scale(dino_img, (50, 50))
@@ -45,19 +45,27 @@ anim_time = 0
 anim_time_d = 0
 kirk_walk_list = []
 for i in range(4):
-    kirk_walk_list.append(image.load(f"assets/assets/Hero_walk_0{i+1}.png"))
+    imagem_original = image.load(f"assets/assets/Hero_walk_0{i+1}.png")
+    imagem_tamanho_novo = transform.scale(imagem_original, (300, 400)) 
+    kirk_walk_list.append(imagem_tamanho_novo)
 
 kirk_walk_list_2 = []
 for i in range(4):
-    kirk_walk_list_2.append(image.load(f"assets/assets/Hero_walk_0{i+5}.png"))
+    imagem_original = image.load(f"assets/assets/Hero_walk_0{i+5}.png")
+    imagem_tamanho_novo = transform.scale(imagem_original, (300, 400))
+    kirk_walk_list_2.append(imagem_tamanho_novo)
 
 kirk_walk_list_up = []
 for i in range(4):
-    kirk_walk_list_up.append(image.load(f"assets/assets/Hero_walk_{i+9}.png"))
+    imagem_original = image.load(f"assets/assets/Hero_walk_{i+9}.png")
+    imagem_tamanho_novo = transform.scale(imagem_original, (300, 400))
+    kirk_walk_list_up.append(imagem_tamanho_novo)
 
 kirk_walk_list_down = []
 for i in range(4):
-    kirk_walk_list_down.append(image.load(f"assets/assets/Hero_walk_{i+13}.png"))
+    imagem_original = image.load(f"assets/assets/Hero_walk_{i+13}.png")
+    imagem_tamanho_novo = transform.scale(imagem_original, (300, 400))
+    kirk_walk_list_down.append(imagem_tamanho_novo)
 
 dino_normal = []
 dino_vermelho = []
@@ -166,7 +174,7 @@ while True:
         loc_x = loc_x-dist
         run_animation_backwards = True
 
-    if keys[K_w] and loc_y > 300:
+    if keys[K_w] and loc_y > 100:
         loc_y = loc_y - dist
         run_animation_up = True
 
@@ -251,9 +259,9 @@ while True:
     for dino in bando_de_dinos:
         dino.atualizar_e_desenhar(screen, dt, dino.minha_animacao)
     if dino_animation == True and run_animation_backwards == False:
-        screen.blit(dino_normal[current_frame], (loc_x,loc_y+80))
+        screen.blit(dino_normal[current_frame], (loc_x+70,loc_y+250))
     if dino_animation == True and run_animation_backwards == True:
-        screen.blit(transform.flip(dino_normal[current_frame], True, False), (loc_x+80,loc_y+80))
+        screen.blit(transform.flip(dino_normal[current_frame], True, False), (loc_x+140,loc_y+240))
     if run_animation == True and run_animation_backwards == False and run_animation_up == False and run_animation_down == False:
         screen.blit(kirk_walk_list[current_frame], (loc_x,loc_y - z_jump))
     if run_animation_backwards == True and run_animation == False and run_animation_up == False and run_animation_down == False:

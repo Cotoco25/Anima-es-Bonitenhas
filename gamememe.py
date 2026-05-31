@@ -166,15 +166,15 @@ while True:
     clock.tick(60)
     dt = clock.get_time()
     
-    if keys[K_d] and loc_x<710:
+    if keys[K_d] and loc_x<640:
         loc_x = loc_x+dist
         run_animation = True
 
-    if keys[K_a] and loc_x>-40:
+    if keys[K_a] and loc_x>-130:
         loc_x = loc_x-dist
         run_animation_backwards = True
 
-    if keys[K_w] and loc_y > 100:
+    if keys[K_w] and loc_y > 120:
         loc_y = loc_y - dist
         run_animation_up = True
 
